@@ -25,7 +25,7 @@ document.querySelector('.busca').addEventListener('submit', async (e) => {
             showWaring('Cidade ou local não encontrado');
             return;
         }
-        showInfo({
+        await showInfo({
             name: json.name,
             country: json.sys.country,
             temperature: json.main.temp,
@@ -43,12 +43,12 @@ showWaring = async (msg) => {
     return;
 }
 
-showInfo = (response) => {
+showInfo = async (response) => {
     showWaring('');
 
         document.querySelector('.resultado').style.display = 'block';
         document.querySelector('.spinner').style.display = 'none';
-        
+
         document.querySelector('.titulo').innerHTML = `${response.name}, ${response.country}`;
         document.querySelector('.tempInfo').innerHTML = `${response.temperature} <sup>°C<sup>`;
         document.querySelector('.ventoInfo').innerHTML = `${response.windSpeed} <span>km/h</span>`;
